@@ -1,0 +1,71 @@
+Dentro de un proyecto usando code claude:
+-   /model
+
+-   /effort (Cambiar el esfuerzo del modelo)
+
+-   Abrir la última conversación: claude -c    
+
+-   Nota: El archivo CLAUDE.md es importante y va en la parte principal/inicial
+            a)  Primero crea un resumen a partir de un proyecto
+            b)  Utilizar el resumen que te otorgó, para crear el archivo claude.md para utilizarlo como memoria en el resto de desarrollo del proyecto
+-   Crear la carpeta commands (Para los archivo .md)
+    Uso de reglas o buenas practias en programación con python, por ejemplo.
+
+-   Uso del @ para selccionar carpetas o archivo y que claude los examine.
+    Similar a cat archivo_name | claude -p "prompt"
+-   Seleccionar lineas específicas de código:
+    Alt + K (or Ctrl + Alt + K )
+
+-   Teclas utiles:
+    -> Ctrl + b: Lo lleva al background (En caso de que se quede esperando una respuesta, ie, de que se cuelgue)
+-   -> /bashes Comando que nos permitiría ver que se está ejecutando en el background, claro, de así estar disponible.
+
+-   Modos de pensamiento
+    a)  think           (Note: Depreciated. Use instead: alt + t)
+    b)  think deeply    (Note: Depreciated. Use instead: alt + t)
+    c)  ultrathink
+
+    Nota: Ver el pensamiento Ctrl + o
+
+-   /resume
+    Nos permite viajar a conversaciones anteriores
+
+-   /clear  (Como abrir una nueva terminal )
+
+-   /agents
+        Vas a poder crear tu agente. Debes buscar el contexto que quieras en tu agente y guardarlos en .claude/agents/nombre_agente.md
+        Para invocar al agente en la consola, debes usar @agent-nombre_agente
+        Nota: Si vas a usar tu agente para hacer modificaciones, debes notificarles que guarde todos esos cambios en una carpeta (Nombre recomendado spec)
+                Ejemp:  >   @agent_01 utiliza el contexto que tenemos en la conversación para el análisis del impacto que debes hacer, apóyate en lo que ya está descubierto y crea
+                        el plan de implementación. (Puedes llama a un archivo en específico para que trabaje, caso similar con los agentes)
+                        >   Utilizando el formato que tiene el subagente agent_01 guarda el plan de implementación del proyecto, guardalo en una carpeta
+                        en el root que se llame spec y dale un nombre adecuado con está nomenclatura 00_nombre_del_spec, donde este número incrementará a lo largo que se creen más specs.
+        Nota: Puedes llamar a varios agentes para que trabajen juntos
+            -   /context Puedes ver el uso de tokens por cada agente
+        
+        Nota especial: 
+
+-   /compact (Compacta el contexto actual)
+-   /context (Contexto)
+
+-   /permissions
+    Ejemp: Restringir Git Ask -> Bash(git commit *)
+
+-   /rewind (Deshacer cambios hechos en archivos)
+    Presionar 2 veces Esc
+
+-   Historial de prompts
+    Ctrl + r
+
+-   Planes
+
+
+-   Ayuda para crear proyectos:
+    Una vez que tengas tus agentes (Bajo el contexto de tu proyecto) creados, utilizalos para que te creen tu plan de trabajo (con o sin código).
+    Nota: De tu plan de trabajo (archivos .md que serán guardados en carpeta spec), para garantizar que algo ya está finalizado, debes específicarle a claude que así lo haga (Alt + K).
+
+-   security-review (Revisar vulnerabilidades)
+
+-   Bypass Permissions mode: claude --dangerously-skip-permissions (Uso en entornos cerrados por ejemplo una máquina virtual)
+
+-   El simbolo # se usa para guardar acciones en memoria?

@@ -1,0 +1,179 @@
+
+-------------------------------------------------------------------------------------------------------------------------------------------COMMANDS
+pwd -> current directory
+
+ls  -> list files
+ls -al -> list files event hidden ones
+ls a_letter + tab -> show files that have that letter at the begining of the word
+
+history -> returns commands history
+!number_in_history -> it will rerun that specific command
+
+cat file_name.extension -> to see content
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------GIT
+
+    #Command to check the connection (It's going to ask the ssh key)
+ssh -T git@github.com
+
+
+git log --all
+git log --all --graph
+git log --all --graph --decorate --oneline  -> I wrote the command with an alias: alias variableName="command"; then you just need to type variableName and the command will be executed
+git log file_name.extension -> It shows all the changes with its respectives hashes from a file
+git log file_name.extension --stat -> It explain in a briefly way how many lines were changed
+                                        If the console is too short, to be able to ge out of semicoln : press: q
+
+git rm --cached file_name.extension -> remove a file from status / staging; cached means that it is still in ram memory
+
+git config --list -> all the configurations uploaded
+
+git show file_name.extension -> shows the changes within a file comparing with the previous commit, + - etc
+
+git commit -> without -m "message" opens by default the console editor (vim), To start write text press: Esc + i; you just need to add the respective message and pres: Esc + shift + z + z
+-> Inside vim if you press double enter, you will be able to add comments to commit
+
+git commit -a -> Its like use git add & git commit
+git commit -am -> Its like use git add & git commit -m "message"
+It works only with files tracked git before in the staging
+
+git commit --amend -> It adds the changes to the last commit, ie, a commit that is already written, so in order to use the correctly you need to use git add . first.
+
+git diff hash1 hash2 -> It shows the changes done
+
+git diff --cached -> It show the changes done from uncommited changed with the last one
+
+git reset hash --hard -> It returns to that previos version deleting the forward commit done after the hash we pass it
+git reset hash --soft -> It return to that previos version but whit the files in staging intact
+
+git checkout hash -> we go back in time to that point
+git checkout hash file_name.extension -> It goes back in time to that point but just of that specific file
+git checkout master -> We go back to the point we left in first place
+
+git clean -f -> Removes all the files that haven't added into the staging, the files with the red color
+
+
+REMOTE SERVER
+
+git remote -v -> You can see the url of that remote repository
+
+git remote add origin url_ssh -> If it is the first time you are going to connect to a remote repository
+git remote set-url origin url_ssh -> If you have already the repository connected
+
+git clone url -> copy the files into a local directory
+
+git fetch -> download the last server remote version into my local repository
+            If I wanto that git copy the files within my file directory  
+git merge -> It merges the current branch with the target branch, It is neccessary to download the entire repository
+
+git pull origin branch_name -> It is git fetch & git merge at the same time
+
+git pull origin branch_name --allow-unrelated-histories -> This will forge the merge between the remote repository and your local repository
+
+git push origin branch_name -> upload your local repository to the remote repository
+
+
+BRANCHES
+
+git branch -> It shows the branches created
+
+gitk -> It shows you the branches created in a more graphical way
+
+git branch branch_name -> create a branch with the name you pass it
+
+git branch -D branch_name -> Delete the branch you are typing
+
+git checkout branch_name -> It changes you to the other branch
+
+git push origin branch_name -> It uploads the branch_name to the remote repository
+
+git merge other_branch -> It merges the current branch with other_branch Inside the current branch
+                            In case there is a conflict, solve it manually and then commit inside the HEAD branch
+                            If your are using VS code, it would be way easier with Accept current or coming changes
+git merge --abort
+
+git cherry-pick hash_of_a_commit_from_any_branch -> You can add the changes made and saved from a specific commit from any branch
+
+
+CREATE TAG
+
+git tag -> It shows all tags created
+
+git tag -a v0.1 -m "Message" hash -> It creates a new tag
+
+git show-ref --tags -> It shows info about the tags
+
+git push origin --tags -> uploads the tags into remote repository
+git push origin :refs/tags/tag_name -> It deletes the tag from your github repository, ofcourse once you have deleted from you local repository
+git tag -d tag_name -> It deletes the tag with the tag_name in your local repository
+
+
+
+REBASE (Pegar una rama aparte en la rama principal master/main, como si esa rama aparte nunca hubiera existido, ie, es un parche) Note: NO le entendí bien jaja
+
+git rebase other_branch
+
+git add <archivo_confilcto>
+git rebase --continues
+git rebase --abort
+
+git chnges (Move into a new branch with changes not stagged)
+git checkout -b new_branch
+
+
+git rebase branch_you_want_to_paste_the_files -> You need to be at the other_branch, it's like the opposite of "merge"
+
+
+STASH (You can change from on one-branch to another-branch without the need to commit the changes made in that one-branch)
+git stash -> Save changes in a temporal
+git stash branch new_branch_name -> In order to be able to create this new branch with the content of the stash, you need to call git stash first.
+
+git stash drop -> You can delete whatever you save in that temporal way
+
+git stash list -> You can see the temprals saves
+
+git stash pop -> It returns state of the changes, ie, to the pre-add to staging. It is recommended to do this inside the branch you call STASH
+
+
+RESET
+
+git reflog -> Use it to inspect the history
+
+git reset --hard HEAD~1 -> (Note: Goes backward directly as far as positions you pass it, if It's HEAD ~2, goes from the current to two spaces down.)
+git reset --hard hash_name	-> (Note: Goes backward accordingly to key you pass it, the problem is, It erases all after that key)
+                        -> Note: use the hash and that's all
+
+git revert hash_name -> (Note: revert actual_key It erases the last commit)
+
+
+SEARCH
+
+git grep word_to_search -> It searches inside the files
+
+git log word_to_search -> It searches in the commits
+
+
+SUBMODULES
+git submodule add git@github.com:User/Git_File.git folder_to_save_it
+
+
+
+SOLVING: No se descargo la ultima versión del main y al querer subir la tuya no te deja.
+
+
+try: 
+git fetch origin master
+git merge origin master
+
+After to wrote this code I received other error: (non-fast-forward)
+
+I write this code:
+git fetch origin master:tmp
+git rebase tmp
+git push origin HEAD:master
+git branch -D tmp
+
+
+
