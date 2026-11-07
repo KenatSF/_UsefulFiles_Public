@@ -59,6 +59,11 @@ Dentro de un proyecto usando code claude:
 
 -   Planes
 
+-   Multiples sesiones.
+-   Sesión anidada: Una sesión actua como main para multiples sesiones.
+
+-   /goal
+
 
 -   Ayuda para crear proyectos:
     Una vez que tengas tus agentes (Bajo el contexto de tu proyecto) creados, utilizalos para que te creen tu plan de trabajo (con o sin código).
