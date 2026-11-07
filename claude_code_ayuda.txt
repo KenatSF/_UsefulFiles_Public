@@ -69,6 +69,8 @@ Dentro de un proyecto usando code claude:
     Una vez que tengas tus agentes (Bajo el contexto de tu proyecto) creados, utilizalos para que te creen tu plan de trabajo (con o sin código).
     Nota: De tu plan de trabajo (archivos .md que serán guardados en carpeta spec), para garantizar que algo ya está finalizado, debes específicarle a claude que así lo haga (Alt + K).
 
+-   Al crear estos planes de trabajo, como recomendación, preguntarle a claude si entendió para validar que se corra el proceso correctamente.
+
 -   security-review (Revisar vulnerabilidades)
 
 -   Bypass Permissions mode: claude --dangerously-skip-permissions (Uso en entornos cerrados por ejemplo una máquina virtual)
